@@ -26,6 +26,8 @@ export default function App() {
       postId: 1,
     })
   }
+
+  
   //fetch declaration
   const fetchAPI = () => {
     fetch(baseUrl + resource,/*optional*/)
@@ -40,8 +42,8 @@ export default function App() {
       })
       .then(res => {
         setData(res);
-        //  console.log(res);
-        setLoading(false)
+         console.log(res);
+        setLoading(false);
       })
       .catch(e => {
         // console.log(e)
@@ -55,8 +57,14 @@ export default function App() {
   //Axios 
   const axiosRequest=()=>{
     axios
-    .get(baseUrl+resource)
+    .get(baseUrl+resource,/*{
+      body: "user-body",
+      email: "user-email",
+      name: "user-name",
+      postId: 1,
+    }*/)
     .then(res=>{
+            // console.log(res);
             setData(res.data);
             setLoading(false);
       
@@ -83,7 +91,7 @@ export default function App() {
     return (
       <div className="container">
 
-        {error ? <h3 className="loading">{error}</h3> :
+        {error ? <h3 >{error}</h3> :
           data.slice(0, 5).map(e => {
 
             return (
